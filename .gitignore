@@ -1,0 +1,31 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv/
+
+# Environment files with secrets
+.env
+
+# Temporary files
+tmp/
+*.log
+
+# DuckDB files
+*.duckdb
+*.duckdb.wal
+
+# IDE
+.idea/
+.vscode/
+
+# AgentUI (can be regenerated)
+agent-ui/
+
+# Streaming data (regenerated at runtime)
+data/streaming_logs.json

@@ -1,0 +1,30 @@
+[project]
+name = "security-analyst"
+version = "0.1.0"
+description = "AI-powered Security Analyst Tool using Agno and Gemini"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "agno>=2.3.26",
+    "ddgs>=9.10.0",
+    "duckdb>=1.4.3",
+    "duckduckgo-search>=8.1.1",
+    "fastapi[standard]>=0.128.0",
+    "google-genai>=1.58.0",
+    "google-generativeai>=0.8.6",
+    "openai>=2.15.0",
+    "pydantic>=2.12.5",
+    "python-dotenv>=1.2.1",
+    "rich>=14.2.0",
+    "sqlalchemy>=2.0.45",
+]
+
+[project.scripts]
+security-analyst = "security_analyst.main:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
