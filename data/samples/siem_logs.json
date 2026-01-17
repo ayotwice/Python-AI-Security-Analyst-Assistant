@@ -9,7 +9,10 @@
     "username": "admin",
     "action": "SSH login attempt",
     "outcome": "failure",
-    "details": {"reason": "invalid password", "attempt": 1}
+    "details": {
+      "reason": "invalid password",
+      "attempt": 1
+    }
   },
   {
     "id": "evt-002",
@@ -21,7 +24,10 @@
     "username": "admin",
     "action": "SSH login attempt",
     "outcome": "failure",
-    "details": {"reason": "invalid password", "attempt": 2}
+    "details": {
+      "reason": "invalid password",
+      "attempt": 2
+    }
   },
   {
     "id": "evt-003",
@@ -30,37 +36,16 @@
     "source_ip": "192.168.1.100",
     "target_host": "prod-db-01",
     "target_port": 22,
-    "username": "admin",
+    "username": "root",
     "action": "SSH login attempt",
     "outcome": "failure",
-    "details": {"reason": "invalid password", "attempt": 3}
+    "details": {
+      "reason": "invalid password",
+      "attempt": 3
+    }
   },
   {
     "id": "evt-004",
-    "timestamp": "2026-01-15T08:00:07Z",
-    "event_type": "failed_login",
-    "source_ip": "192.168.1.100",
-    "target_host": "prod-db-01",
-    "target_port": 22,
-    "username": "root",
-    "action": "SSH login attempt",
-    "outcome": "failure",
-    "details": {"reason": "invalid password", "attempt": 4}
-  },
-  {
-    "id": "evt-005",
-    "timestamp": "2026-01-15T08:00:09Z",
-    "event_type": "failed_login",
-    "source_ip": "192.168.1.100",
-    "target_host": "prod-db-01",
-    "target_port": 22,
-    "username": "root",
-    "action": "SSH login attempt",
-    "outcome": "failure",
-    "details": {"reason": "invalid password", "attempt": 5}
-  },
-  {
-    "id": "evt-006",
     "timestamp": "2026-01-15T08:00:45Z",
     "event_type": "successful_login",
     "source_ip": "192.168.1.100",
@@ -69,10 +54,13 @@
     "username": "backup_svc",
     "action": "SSH login",
     "outcome": "success",
-    "details": {"auth_method": "password", "session_id": "sess-abc123"}
+    "details": {
+      "auth_method": "password",
+      "session_id": "sess-abc123"
+    }
   },
   {
-    "id": "evt-007",
+    "id": "evt-005",
     "timestamp": "2026-01-15T08:01:10Z",
     "event_type": "user_created",
     "source_ip": null,
@@ -81,10 +69,17 @@
     "username": "sysadmin2",
     "action": "useradd",
     "outcome": "success",
-    "details": {"created_by": "backup_svc", "uid": 1001, "groups": ["sudo", "docker"]}
+    "details": {
+      "created_by": "backup_svc",
+      "uid": 1001,
+      "groups": [
+        "sudo",
+        "docker"
+      ]
+    }
   },
   {
-    "id": "evt-008",
+    "id": "evt-006",
     "timestamp": "2026-01-15T08:01:30Z",
     "event_type": "privilege_change",
     "source_ip": null,
@@ -93,10 +88,13 @@
     "username": "sysadmin2",
     "action": "sudo su -",
     "outcome": "success",
-    "details": {"escalated_to": "root", "command": "/bin/bash"}
+    "details": {
+      "escalated_to": "root",
+      "command": "/bin/bash"
+    }
   },
   {
-    "id": "evt-009",
+    "id": "evt-007",
     "timestamp": "2026-01-15T08:02:00Z",
     "event_type": "file_access",
     "source_ip": null,
@@ -105,34 +103,13 @@
     "username": "root",
     "action": "read",
     "outcome": "success",
-    "details": {"file": "/etc/shadow", "access_type": "read"}
+    "details": {
+      "file": "/etc/shadow",
+      "access_type": "read"
+    }
   },
   {
-    "id": "evt-010",
-    "timestamp": "2026-01-15T08:02:15Z",
-    "event_type": "file_access",
-    "source_ip": null,
-    "target_host": "prod-db-01",
-    "target_port": null,
-    "username": "root",
-    "action": "read",
-    "outcome": "success",
-    "details": {"file": "/var/lib/mysql/customers.ibd", "access_type": "read", "size_mb": 450}
-  },
-  {
-    "id": "evt-011",
-    "timestamp": "2026-01-15T08:03:00Z",
-    "event_type": "file_access",
-    "source_ip": null,
-    "target_host": "prod-db-01",
-    "target_port": null,
-    "username": "root",
-    "action": "archive",
-    "outcome": "success",
-    "details": {"file": "/tmp/backup.tar.gz", "size_mb": 380, "contents": "database dump"}
-  },
-  {
-    "id": "evt-012",
+    "id": "evt-008",
     "timestamp": "2026-01-15T08:05:00Z",
     "event_type": "outbound_transfer",
     "source_ip": "10.0.1.50",
@@ -141,10 +118,466 @@
     "username": "root",
     "action": "HTTPS POST",
     "outcome": "success",
-    "details": {"bytes_sent": 398458880, "destination": "45.33.32.156", "protocol": "TLS 1.3", "user_agent": "curl/7.68.0"}
+    "details": {
+      "bytes_sent": 398458880,
+      "destination": "45.33.32.156",
+      "protocol": "TLS 1.3"
+    }
   },
   {
-    "id": "evt-013",
+    "id": "ransomware-001",
+    "timestamp": "2026-01-15T10:00:00Z",
+    "event_type": "process_execution",
+    "source_ip": null,
+    "target_host": "file-server-01",
+    "target_port": null,
+    "username": "jdoe",
+    "action": "process start",
+    "outcome": "success",
+    "details": {
+      "process": "invoice_q4.pdf.exe",
+      "command_line": "invoice_q4.pdf.exe",
+      "parent_process": "outlook.exe",
+      "sha256": "a1b2c3d4e5f6789..."
+    }
+  },
+  {
+    "id": "ransomware-002",
+    "timestamp": "2026-01-15T10:00:15Z",
+    "event_type": "process_execution",
+    "source_ip": null,
+    "target_host": "file-server-01",
+    "target_port": null,
+    "username": "SYSTEM",
+    "action": "process start",
+    "outcome": "success",
+    "details": {
+      "process": "vssadmin.exe",
+      "command_line": "vssadmin delete shadows /all /quiet",
+      "parent_process": "invoice_q4.pdf.exe"
+    }
+  },
+  {
+    "id": "ransomware-003",
+    "timestamp": "2026-01-15T10:00:20Z",
+    "event_type": "process_execution",
+    "source_ip": null,
+    "target_host": "file-server-01",
+    "target_port": null,
+    "username": "SYSTEM",
+    "action": "process start",
+    "outcome": "success",
+    "details": {
+      "process": "bcdedit.exe",
+      "command_line": "bcdedit /set {default} recoveryenabled No",
+      "parent_process": "invoice_q4.pdf.exe"
+    }
+  },
+  {
+    "id": "ransomware-004",
+    "timestamp": "2026-01-15T10:00:30Z",
+    "event_type": "file_modification",
+    "source_ip": null,
+    "target_host": "file-server-01",
+    "target_port": null,
+    "username": "SYSTEM",
+    "action": "file encrypted",
+    "outcome": "success",
+    "details": {
+      "files_affected": 15420,
+      "extension_added": ".lockbit",
+      "ransom_note": "README_TO_RESTORE.txt"
+    }
+  },
+  {
+    "id": "ransomware-005",
+    "timestamp": "2026-01-15T10:01:00Z",
+    "event_type": "network_connection",
+    "source_ip": "10.0.2.50",
+    "target_host": "185.220.101.45",
+    "target_port": 443,
+    "username": "SYSTEM",
+    "action": "C2 beacon",
+    "outcome": "success",
+    "details": {
+      "domain": "lockbit-payment.onion",
+      "user_agent": "Mozilla/5.0",
+      "beacon_interval_seconds": 60
+    }
+  },
+  {
+    "id": "ransomware-006",
+    "timestamp": "2026-01-15T10:02:00Z",
+    "event_type": "lateral_movement",
+    "source_ip": "10.0.2.50",
+    "target_host": "dc-01",
+    "target_port": 445,
+    "username": "SYSTEM",
+    "action": "SMB connection",
+    "outcome": "success",
+    "details": {
+      "share": "\\\\dc-01\\SYSVOL",
+      "source_host": "file-server-01",
+      "worm_behavior": true
+    }
+  },
+  {
+    "id": "insider-001",
+    "timestamp": "2026-01-15T18:30:00Z",
+    "event_type": "successful_login",
+    "source_ip": "10.0.5.100",
+    "target_host": "hr-database",
+    "target_port": 5432,
+    "username": "hr_analyst",
+    "action": "database login",
+    "outcome": "success",
+    "details": {
+      "auth_method": "password",
+      "application": "pgAdmin",
+      "after_hours": true
+    }
+  },
+  {
+    "id": "insider-002",
+    "timestamp": "2026-01-15T18:35:00Z",
+    "event_type": "database_query",
+    "source_ip": "10.0.5.100",
+    "target_host": "hr-database",
+    "target_port": 5432,
+    "username": "hr_analyst",
+    "action": "SELECT query",
+    "outcome": "success",
+    "details": {
+      "query": "SELECT * FROM employees WHERE salary > 150000",
+      "rows_returned": 245,
+      "data_classification": "CONFIDENTIAL"
+    }
+  },
+  {
+    "id": "insider-003",
+    "timestamp": "2026-01-15T18:40:00Z",
+    "event_type": "database_query",
+    "source_ip": "10.0.5.100",
+    "target_host": "hr-database",
+    "target_port": 5432,
+    "username": "hr_analyst",
+    "action": "SELECT query",
+    "outcome": "success",
+    "details": {
+      "query": "SELECT ssn, bank_account, address FROM employees",
+      "rows_returned": 12500,
+      "data_classification": "PII"
+    }
+  },
+  {
+    "id": "insider-004",
+    "timestamp": "2026-01-15T18:45:00Z",
+    "event_type": "data_download",
+    "source_ip": "10.0.5.100",
+    "target_host": "hr-database",
+    "target_port": 5432,
+    "username": "hr_analyst",
+    "action": "COPY TO CSV",
+    "outcome": "success",
+    "details": {
+      "file": "/tmp/employee_export.csv",
+      "rows_exported": 12500,
+      "size_mb": 45
+    }
+  },
+  {
+    "id": "insider-005",
+    "timestamp": "2026-01-15T18:50:00Z",
+    "event_type": "file_upload",
+    "source_ip": "10.0.5.100",
+    "target_host": "drive.google.com",
+    "target_port": 443,
+    "username": "hr_analyst",
+    "action": "file upload",
+    "outcome": "success",
+    "details": {
+      "file": "employee_export.csv",
+      "destination": "personal Google Drive",
+      "dlp_alert": "PII detected"
+    }
+  },
+  {
+    "id": "insider-006",
+    "timestamp": "2026-01-15T19:00:00Z",
+    "event_type": "email_sent",
+    "source_ip": "10.0.5.100",
+    "target_host": "mail-gateway",
+    "target_port": 587,
+    "username": "hr_analyst",
+    "action": "email with attachment",
+    "outcome": "success",
+    "details": {
+      "recipient": "competitor-hr@rival-corp.com",
+      "subject": "As discussed",
+      "attachment": "salary_data.xlsx",
+      "dlp_alert": "sensitive data to external recipient"
+    }
+  },
+  {
+    "id": "cloud-001",
+    "timestamp": "2026-01-15T09:00:00Z",
+    "event_type": "cloud_config_change",
+    "source_ip": "73.42.156.89",
+    "target_host": "aws-console",
+    "target_port": 443,
+    "username": "dev-intern",
+    "action": "s3:PutBucketPolicy",
+    "outcome": "success",
+    "details": {
+      "bucket": "prod-customer-data",
+      "change": "Principal: '*' added",
+      "effect": "public read access",
+      "region": "us-east-1"
+    }
+  },
+  {
+    "id": "cloud-002",
+    "timestamp": "2026-01-15T09:05:00Z",
+    "event_type": "cloud_config_change",
+    "source_ip": "73.42.156.89",
+    "target_host": "aws-console",
+    "target_port": 443,
+    "username": "dev-intern",
+    "action": "ec2:AuthorizeSecurityGroupIngress",
+    "outcome": "success",
+    "details": {
+      "security_group": "sg-prod-web",
+      "rule": "0.0.0.0/0:22",
+      "description": "SSH from anywhere"
+    }
+  },
+  {
+    "id": "cloud-003",
+    "timestamp": "2026-01-15T09:10:00Z",
+    "event_type": "cloud_config_change",
+    "source_ip": "73.42.156.89",
+    "target_host": "aws-console",
+    "target_port": 443,
+    "username": "dev-intern",
+    "action": "iam:CreateAccessKey",
+    "outcome": "success",
+    "details": {
+      "user": "prod-admin",
+      "key_id": "AKIA...",
+      "note": "intern created key for prod-admin account"
+    }
+  },
+  {
+    "id": "cloud-004",
+    "timestamp": "2026-01-15T09:30:00Z",
+    "event_type": "cloud_data_access",
+    "source_ip": "185.220.101.50",
+    "target_host": "s3://prod-customer-data",
+    "target_port": 443,
+    "username": "anonymous",
+    "action": "s3:GetObject",
+    "outcome": "success",
+    "details": {
+      "objects_accessed": 45000,
+      "data_size_gb": 12,
+      "source_country": "Russia",
+      "bucket_was_public": true
+    }
+  },
+  {
+    "id": "cloud-005",
+    "timestamp": "2026-01-15T10:00:00Z",
+    "event_type": "cloud_resource_created",
+    "source_ip": "89.248.167.131",
+    "target_host": "aws-console",
+    "target_port": 443,
+    "username": "prod-admin",
+    "action": "ec2:RunInstances",
+    "outcome": "success",
+    "details": {
+      "instance_type": "p3.16xlarge",
+      "count": 20,
+      "region": "us-east-1",
+      "purpose": "crypto mining",
+      "estimated_cost_hour": 489.60
+    }
+  },
+  {
+    "id": "apt-001",
+    "timestamp": "2026-01-15T02:00:00Z",
+    "event_type": "dns_query",
+    "source_ip": "10.0.3.15",
+    "target_host": "internal-dns",
+    "target_port": 53,
+    "username": null,
+    "action": "DNS lookup",
+    "outcome": "success",
+    "details": {
+      "query": "update.microsoft-365-security.com",
+      "query_type": "A",
+      "response": "185.156.73.45",
+      "threat_intel": "APT29 infrastructure"
+    }
+  },
+  {
+    "id": "apt-002",
+    "timestamp": "2026-01-15T02:00:30Z",
+    "event_type": "network_connection",
+    "source_ip": "10.0.3.15",
+    "target_host": "185.156.73.45",
+    "target_port": 443,
+    "username": "SYSTEM",
+    "action": "HTTPS connection",
+    "outcome": "success",
+    "details": {
+      "sni": "update.microsoft-365-security.com",
+      "certificate_issuer": "Let's Encrypt",
+      "jarm_hash": "2ad2ad16d2ad2ad..."
+    }
+  },
+  {
+    "id": "apt-003",
+    "timestamp": "2026-01-15T02:01:00Z",
+    "event_type": "process_execution",
+    "source_ip": null,
+    "target_host": "exec-workstation-01",
+    "target_port": null,
+    "username": "SYSTEM",
+    "action": "process start",
+    "outcome": "success",
+    "details": {
+      "process": "rundll32.exe",
+      "command_line": "rundll32.exe C:\\Windows\\Temp\\update.dll,DllMain",
+      "parent_process": "svchost.exe",
+      "living_off_land": true
+    }
+  },
+  {
+    "id": "apt-004",
+    "timestamp": "2026-01-15T02:05:00Z",
+    "event_type": "credential_access",
+    "source_ip": null,
+    "target_host": "exec-workstation-01",
+    "target_port": null,
+    "username": "SYSTEM",
+    "action": "LSASS memory access",
+    "outcome": "success",
+    "details": {
+      "technique": "MiniDump via comsvcs.dll",
+      "target_process": "lsass.exe",
+      "dump_file": "C:\\Windows\\Temp\\debug.dmp"
+    }
+  },
+  {
+    "id": "apt-005",
+    "timestamp": "2026-01-15T02:10:00Z",
+    "event_type": "lateral_movement",
+    "source_ip": "10.0.3.15",
+    "target_host": "dc-01",
+    "target_port": 5985,
+    "username": "domain-admin",
+    "action": "WinRM connection",
+    "outcome": "success",
+    "details": {
+      "authentication": "Kerberos",
+      "source_host": "exec-workstation-01",
+      "golden_ticket": "suspected"
+    }
+  },
+  {
+    "id": "apt-006",
+    "timestamp": "2026-01-15T02:15:00Z",
+    "event_type": "ad_replication",
+    "source_ip": "10.0.3.15",
+    "target_host": "dc-01",
+    "target_port": 389,
+    "username": "domain-admin",
+    "action": "DCSync",
+    "outcome": "success",
+    "details": {
+      "technique": "GetNCChanges",
+      "objects_replicated": "krbtgt, domain admins",
+      "mitre": "T1003.006"
+    }
+  },
+  {
+    "id": "apt-007",
+    "timestamp": "2026-01-15T02:20:00Z",
+    "event_type": "persistence",
+    "source_ip": null,
+    "target_host": "dc-01",
+    "target_port": null,
+    "username": "SYSTEM",
+    "action": "scheduled task created",
+    "outcome": "success",
+    "details": {
+      "task_name": "Microsoft\\Windows\\NetTrace\\GatherNetworkInfo",
+      "trigger": "SYSTEM startup",
+      "action": "powershell -enc ...",
+      "hidden": true
+    }
+  },
+  {
+    "id": "apt-008",
+    "timestamp": "2026-01-15T02:30:00Z",
+    "event_type": "email_access",
+    "source_ip": "10.0.3.15",
+    "target_host": "exchange-01",
+    "target_port": 443,
+    "username": "ceo@company.com",
+    "action": "EWS mailbox access",
+    "outcome": "success",
+    "details": {
+      "folders_accessed": [
+        "Inbox",
+        "Sent Items",
+        "Deleted Items"
+      ],
+      "emails_exported": 15000,
+      "via_impersonation": true
+    }
+  },
+  {
+    "id": "apt-009",
+    "timestamp": "2026-01-15T03:00:00Z",
+    "event_type": "data_staging",
+    "source_ip": null,
+    "target_host": "dc-01",
+    "target_port": null,
+    "username": "SYSTEM",
+    "action": "file archive",
+    "outcome": "success",
+    "details": {
+      "archive": "C:\\Windows\\Temp\\sys.cab",
+      "contents": [
+        "NTDS.dit",
+        "SYSTEM hive",
+        "CEO mailbox"
+      ],
+      "size_gb": 8.5,
+      "password_protected": true
+    }
+  },
+  {
+    "id": "apt-010",
+    "timestamp": "2026-01-15T03:30:00Z",
+    "event_type": "exfiltration",
+    "source_ip": "10.0.1.5",
+    "target_host": "storage.googleapis.com",
+    "target_port": 443,
+    "username": "SYSTEM",
+    "action": "HTTPS upload",
+    "outcome": "success",
+    "details": {
+      "destination": "gs://apt29-exfil-bucket",
+      "file": "sys.cab",
+      "size_gb": 8.5,
+      "chunked_transfer": true,
+      "slow_exfil": true
+    }
+  },
+  {
+    "id": "recon-001",
     "timestamp": "2026-01-15T09:15:00Z",
     "event_type": "port_scan",
     "source_ip": "203.0.113.50",
@@ -153,22 +586,72 @@
     "username": null,
     "action": "SYN scan",
     "outcome": "detected",
-    "details": {"ports_scanned": [22, 80, 443, 3306, 5432, 8080, 8443], "scan_duration_seconds": 12}
+    "details": {
+      "ports_scanned": [
+        22,
+        80,
+        443,
+        3306,
+        5432,
+        8080,
+        8443
+      ],
+      "scan_duration_seconds": 12
+    }
   },
   {
-    "id": "evt-014",
-    "timestamp": "2026-01-15T09:30:00Z",
-    "event_type": "failed_login",
-    "source_ip": "203.0.113.50",
-    "target_host": "web-server-01",
-    "target_port": 22,
-    "username": "deploy",
-    "action": "SSH login attempt",
-    "outcome": "failure",
-    "details": {"reason": "public key rejected"}
+    "id": "waf-001",
+    "timestamp": "2026-01-15T16:00:00Z",
+    "event_type": "waf_block",
+    "source_ip": "185.220.101.1",
+    "target_host": "www.company.com",
+    "target_port": 443,
+    "username": null,
+    "action": "SQL injection blocked",
+    "outcome": "blocked",
+    "details": {
+      "attack_type": "SQLi",
+      "payload": "' OR 1=1--",
+      "uri": "/login.php",
+      "rule_id": "942100"
+    }
   },
   {
-    "id": "evt-015",
+    "id": "waf-002",
+    "timestamp": "2026-01-15T16:05:00Z",
+    "event_type": "waf_block",
+    "source_ip": "185.220.101.1",
+    "target_host": "www.company.com",
+    "target_port": 443,
+    "username": null,
+    "action": "XSS blocked",
+    "outcome": "blocked",
+    "details": {
+      "attack_type": "XSS",
+      "payload": "<script>alert(1)</script>",
+      "uri": "/search",
+      "rule_id": "941100"
+    }
+  },
+  {
+    "id": "phishing-001",
+    "timestamp": "2026-01-15T17:00:00Z",
+    "event_type": "email_phishing",
+    "source_ip": null,
+    "target_host": "mail-gateway",
+    "target_port": 25,
+    "username": "cfo@company.com",
+    "action": "phishing email blocked",
+    "outcome": "blocked",
+    "details": {
+      "sender": "ceo@c0mpany.com",
+      "subject": "Urgent wire transfer needed",
+      "attachment": "invoice.html",
+      "verdict": "CEO impersonation"
+    }
+  },
+  {
+    "id": "malware-001",
     "timestamp": "2026-01-15T10:00:00Z",
     "event_type": "malware_detected",
     "source_ip": null,
@@ -177,10 +660,14 @@
     "username": "jsmith",
     "action": "file quarantined",
     "outcome": "blocked",
-    "details": {"malware_name": "Trojan.GenericKD.46789", "file_path": "/home/jsmith/Downloads/invoice.pdf.exe", "hash": "a1b2c3d4e5f6..."}
+    "details": {
+      "malware_name": "Trojan.GenericKD.46789",
+      "file_path": "/home/jsmith/Downloads/invoice.pdf.exe",
+      "hash": "a1b2c3d4e5f6..."
+    }
   },
   {
-    "id": "evt-016",
+    "id": "policy-001",
     "timestamp": "2026-01-15T11:00:00Z",
     "event_type": "policy_violation",
     "source_ip": "10.0.5.25",
@@ -189,6 +676,712 @@
     "username": "contractor01",
     "action": "s3:GetObject",
     "outcome": "allowed",
-    "details": {"bucket": "company-backup-bucket", "object": "financials/2025-q4.xlsx", "policy": "data-classification-violation", "data_label": "CONFIDENTIAL"}
+    "details": {
+      "bucket": "company-backup-bucket",
+      "object": "financials/2025-q4.xlsx",
+      "policy": "data-classification-violation",
+      "data_label": "CONFIDENTIAL"
+    }
+  },
+  {
+    "id": "firewall-001",
+    "timestamp": "2026-01-15T12:15:00Z",
+    "event_type": "firewall_block",
+    "source_ip": "45.155.205.233",
+    "target_host": "edge-fw-01",
+    "target_port": 3389,
+    "username": null,
+    "action": "connection blocked",
+    "outcome": "blocked",
+    "details": {
+      "rule": "block-rdp-external",
+      "protocol": "TCP",
+      "geo_location": "China"
+    }
+  },
+  {
+    "id": "vpn-001",
+    "timestamp": "2026-01-15T14:00:00Z",
+    "event_type": "successful_login",
+    "source_ip": "198.51.100.77",
+    "target_host": "okta-sso",
+    "target_port": 443,
+    "username": "hr-manager",
+    "action": "SSO login",
+    "outcome": "success",
+    "details": {
+      "auth_method": "password+push",
+      "app_accessed": "workday",
+      "geo_location": "Nigeria",
+      "usual_location": "USA",
+      "impossible_travel": true
+    }
+  },
+  {
+    "id": "account-001",
+    "timestamp": "2026-01-15T21:00:00Z",
+    "event_type": "account_lockout",
+    "source_ip": null,
+    "target_host": "ad-dc-01",
+    "target_port": null,
+    "username": "svc-jenkins",
+    "action": "account locked",
+    "outcome": "locked",
+    "details": {
+      "failed_attempts": 10,
+      "lockout_duration_minutes": 30,
+      "source_hosts": [
+        "build-01",
+        "build-02",
+        "build-03"
+      ]
+    }
+  },
+  {
+    "id": "env-001",
+    "timestamp": "2026-01-15T08:30:00Z",
+    "event_type": "successful_login",
+    "source_ip": "10.10.1.50",
+    "target_host": "workstation-fin-001",
+    "target_port": 3389,
+    "username": "sarah.johnson",
+    "action": "RDP login",
+    "outcome": "success",
+    "details": {
+      "department": "Finance",
+      "location": "NYC Office",
+      "device_type": "corporate laptop"
+    }
+  },
+  {
+    "id": "env-002",
+    "timestamp": "2026-01-15T08:32:00Z",
+    "event_type": "successful_login",
+    "source_ip": "10.10.2.22",
+    "target_host": "workstation-hr-005",
+    "target_port": 3389,
+    "username": "michael.chen",
+    "action": "RDP login",
+    "outcome": "success",
+    "details": {
+      "department": "Human Resources",
+      "location": "SF Office",
+      "device_type": "corporate laptop"
+    }
+  },
+  {
+    "id": "env-003",
+    "timestamp": "2026-01-15T08:35:00Z",
+    "event_type": "successful_login",
+    "source_ip": "10.10.3.100",
+    "target_host": "workstation-eng-012",
+    "target_port": 22,
+    "username": "alex.kumar",
+    "action": "SSH login",
+    "outcome": "success",
+    "details": {
+      "department": "Engineering",
+      "location": "Austin Office",
+      "device_type": "MacBook Pro"
+    }
+  },
+  {
+    "id": "env-004",
+    "timestamp": "2026-01-15T08:40:00Z",
+    "event_type": "successful_login",
+    "source_ip": "10.10.4.75",
+    "target_host": "workstation-sales-008",
+    "target_port": 3389,
+    "username": "jennifer.williams",
+    "action": "RDP login",
+    "outcome": "success",
+    "details": {
+      "department": "Sales",
+      "location": "Chicago Office",
+      "device_type": "corporate laptop"
+    }
+  },
+  {
+    "id": "env-005",
+    "timestamp": "2026-01-15T08:45:00Z",
+    "event_type": "successful_login",
+    "source_ip": "10.10.5.30",
+    "target_host": "workstation-legal-003",
+    "target_port": 3389,
+    "username": "david.martinez",
+    "action": "RDP login",
+    "outcome": "success",
+    "details": {
+      "department": "Legal",
+      "location": "NYC Office",
+      "device_type": "corporate laptop"
+    }
+  },
+  {
+    "id": "env-006",
+    "timestamp": "2026-01-15T09:00:00Z",
+    "event_type": "file_access",
+    "source_ip": "10.10.1.50",
+    "target_host": "nas-finance-01",
+    "target_port": 445,
+    "username": "sarah.johnson",
+    "action": "file read",
+    "outcome": "success",
+    "details": {
+      "file": "\\\\nas-finance-01\\reports\\Q4-2025-earnings.xlsx",
+      "department": "Finance"
+    }
+  },
+  {
+    "id": "env-007",
+    "timestamp": "2026-01-15T09:15:00Z",
+    "event_type": "database_query",
+    "source_ip": "10.10.3.100",
+    "target_host": "prod-postgres-01",
+    "target_port": 5432,
+    "username": "alex.kumar",
+    "action": "SELECT query",
+    "outcome": "success",
+    "details": {
+      "query": "SELECT * FROM orders WHERE date > '2025-01-01'",
+      "rows_returned": 45000,
+      "application": "DataGrip"
+    }
+  },
+  {
+    "id": "env-008",
+    "timestamp": "2026-01-15T09:30:00Z",
+    "event_type": "vpn_connection",
+    "source_ip": "73.189.45.120",
+    "target_host": "vpn-gateway-east",
+    "target_port": 443,
+    "username": "remote.contractor1",
+    "action": "VPN connected",
+    "outcome": "success",
+    "details": {
+      "geo_location": "New Jersey",
+      "client_os": "Windows 11",
+      "assigned_ip": "10.100.1.50"
+    }
+  },
+  {
+    "id": "env-009",
+    "timestamp": "2026-01-15T09:45:00Z",
+    "event_type": "email_sent",
+    "source_ip": "10.10.4.75",
+    "target_host": "mail-gateway",
+    "target_port": 587,
+    "username": "jennifer.williams",
+    "action": "email sent",
+    "outcome": "success",
+    "details": {
+      "recipient": "customer@acme-corp.com",
+      "subject": "Proposal for Q1 2026",
+      "attachment_count": 2
+    }
+  },
+  {
+    "id": "env-010",
+    "timestamp": "2026-01-15T10:00:00Z",
+    "event_type": "cloud_resource_access",
+    "source_ip": "10.10.3.100",
+    "target_host": "aws-console",
+    "target_port": 443,
+    "username": "alex.kumar",
+    "action": "ec2:DescribeInstances",
+    "outcome": "success",
+    "details": {
+      "region": "us-west-2",
+      "instances_returned": 45,
+      "role": "DevOps Engineer"
+    }
+  },
+  {
+    "id": "env-011",
+    "timestamp": "2026-01-15T10:15:00Z",
+    "event_type": "successful_login",
+    "source_ip": "10.10.6.10",
+    "target_host": "jump-server-01",
+    "target_port": 22,
+    "username": "svc-ansible",
+    "action": "SSH login",
+    "outcome": "success",
+    "details": {
+      "auth_method": "public_key",
+      "service_account": true,
+      "source_system": "ansible-controller"
+    }
+  },
+  {
+    "id": "env-012",
+    "timestamp": "2026-01-15T10:30:00Z",
+    "event_type": "successful_login",
+    "source_ip": "10.10.7.25",
+    "target_host": "monitoring-server",
+    "target_port": 443,
+    "username": "ops-team",
+    "action": "Grafana login",
+    "outcome": "success",
+    "details": {
+      "application": "Grafana",
+      "dashboards_accessed": [
+        "Infrastructure",
+        "Application Metrics"
+      ]
+    }
+  },
+  {
+    "id": "env-013",
+    "timestamp": "2026-01-15T10:45:00Z",
+    "event_type": "database_query",
+    "source_ip": "10.10.8.50",
+    "target_host": "analytics-clickhouse",
+    "target_port": 9000,
+    "username": "data-analyst-01",
+    "action": "SELECT query",
+    "outcome": "success",
+    "details": {
+      "query": "SELECT user_id, event FROM events WHERE date = today()",
+      "rows_returned": 2500000,
+      "query_time_ms": 850
+    }
+  },
+  {
+    "id": "env-014",
+    "timestamp": "2026-01-15T11:00:00Z",
+    "event_type": "file_upload",
+    "source_ip": "10.10.2.22",
+    "target_host": "sharepoint.company.com",
+    "target_port": 443,
+    "username": "michael.chen",
+    "action": "file upload",
+    "outcome": "success",
+    "details": {
+      "file": "New_Hire_Onboarding_2026.docx",
+      "size_mb": 2.5,
+      "site": "HR Team Site"
+    }
+  },
+  {
+    "id": "env-015",
+    "timestamp": "2026-01-15T11:15:00Z",
+    "event_type": "printer_access",
+    "source_ip": "10.10.5.30",
+    "target_host": "printer-legal-floor3",
+    "target_port": 9100,
+    "username": "david.martinez",
+    "action": "print job",
+    "outcome": "success",
+    "details": {
+      "document": "Contract_NDA_ClientX.pdf",
+      "pages": 15,
+      "color": false
+    }
+  },
+  {
+    "id": "env-016",
+    "timestamp": "2026-01-15T11:30:00Z",
+    "event_type": "badge_access",
+    "source_ip": null,
+    "target_host": "access-control-hq",
+    "target_port": null,
+    "username": "sarah.johnson",
+    "action": "door access",
+    "outcome": "success",
+    "details": {
+      "door": "Server Room A",
+      "badge_id": "EMP-2847",
+      "location": "NYC HQ Floor 5"
+    }
+  },
+  {
+    "id": "env-017",
+    "timestamp": "2026-01-15T12:00:00Z",
+    "event_type": "video_conference",
+    "source_ip": "10.10.4.75",
+    "target_host": "zoom.us",
+    "target_port": 443,
+    "username": "jennifer.williams",
+    "action": "meeting joined",
+    "outcome": "success",
+    "details": {
+      "meeting_id": "847-293-1056",
+      "duration_minutes": 45,
+      "participants": 8
+    }
+  },
+  {
+    "id": "env-018",
+    "timestamp": "2026-01-15T13:00:00Z",
+    "event_type": "code_commit",
+    "source_ip": "10.10.3.100",
+    "target_host": "github.company.com",
+    "target_port": 443,
+    "username": "alex.kumar",
+    "action": "git push",
+    "outcome": "success",
+    "details": {
+      "repository": "backend-api",
+      "branch": "feature/auth-refactor",
+      "commits": 3,
+      "files_changed": 12
+    }
+  },
+  {
+    "id": "env-019",
+    "timestamp": "2026-01-15T13:30:00Z",
+    "event_type": "ci_cd_pipeline",
+    "source_ip": "10.10.6.100",
+    "target_host": "jenkins-master",
+    "target_port": 8080,
+    "username": "svc-jenkins",
+    "action": "pipeline triggered",
+    "outcome": "success",
+    "details": {
+      "job": "backend-api-deploy",
+      "trigger": "push to main",
+      "build_number": 1547
+    }
+  },
+  {
+    "id": "env-020",
+    "timestamp": "2026-01-15T14:00:00Z",
+    "event_type": "container_deployed",
+    "source_ip": "10.10.6.100",
+    "target_host": "k8s-cluster-prod",
+    "target_port": 6443,
+    "username": "svc-argocd",
+    "action": "deployment updated",
+    "outcome": "success",
+    "details": {
+      "namespace": "production",
+      "deployment": "backend-api",
+      "replicas": 5,
+      "image": "backend:v2.3.1"
+    }
+  },
+  {
+    "id": "env-021",
+    "timestamp": "2026-01-15T14:30:00Z",
+    "event_type": "successful_login",
+    "source_ip": "10.10.9.15",
+    "target_host": "workstation-exec-001",
+    "target_port": 3389,
+    "username": "ceo",
+    "action": "RDP login",
+    "outcome": "success",
+    "details": {
+      "department": "Executive",
+      "location": "NYC Office",
+      "device_type": "Surface Pro"
+    }
+  },
+  {
+    "id": "env-022",
+    "timestamp": "2026-01-15T15:00:00Z",
+    "event_type": "successful_login",
+    "source_ip": "10.10.9.16",
+    "target_host": "workstation-exec-002",
+    "target_port": 3389,
+    "username": "cfo",
+    "action": "RDP login",
+    "outcome": "success",
+    "details": {
+      "department": "Executive",
+      "location": "NYC Office",
+      "device_type": "ThinkPad X1"
+    }
+  },
+  {
+    "id": "env-023",
+    "timestamp": "2026-01-15T15:30:00Z",
+    "event_type": "database_backup",
+    "source_ip": null,
+    "target_host": "backup-server-01",
+    "target_port": null,
+    "username": "svc-backup",
+    "action": "backup completed",
+    "outcome": "success",
+    "details": {
+      "database": "prod-postgres-01",
+      "size_gb": 125,
+      "duration_minutes": 45,
+      "destination": "s3://company-backups"
+    }
+  },
+  {
+    "id": "env-024",
+    "timestamp": "2026-01-15T16:00:00Z",
+    "event_type": "antivirus_scan",
+    "source_ip": null,
+    "target_host": "workstation-eng-012",
+    "target_port": null,
+    "username": "SYSTEM",
+    "action": "scheduled scan",
+    "outcome": "success",
+    "details": {
+      "files_scanned": 450000,
+      "threats_found": 0,
+      "scan_time_minutes": 35,
+      "engine": "CrowdStrike"
+    }
+  },
+  {
+    "id": "env-025",
+    "timestamp": "2026-01-15T16:30:00Z",
+    "event_type": "patch_installed",
+    "source_ip": null,
+    "target_host": "workstation-sales-008",
+    "target_port": null,
+    "username": "SYSTEM",
+    "action": "Windows Update",
+    "outcome": "success",
+    "details": {
+      "kb": "KB5034441",
+      "reboot_required": true,
+      "update_type": "Security Update"
+    }
+  },
+  {
+    "id": "env-026",
+    "timestamp": "2026-01-15T17:00:00Z",
+    "event_type": "successful_login",
+    "source_ip": "10.20.1.50",
+    "target_host": "workstation-mkt-003",
+    "target_port": 3389,
+    "username": "lisa.thompson",
+    "action": "RDP login",
+    "outcome": "success",
+    "details": {
+      "department": "Marketing",
+      "location": "LA Office",
+      "device_type": "iMac"
+    }
+  },
+  {
+    "id": "env-027",
+    "timestamp": "2026-01-15T17:30:00Z",
+    "event_type": "saas_access",
+    "source_ip": "10.20.1.50",
+    "target_host": "salesforce.com",
+    "target_port": 443,
+    "username": "lisa.thompson",
+    "action": "Salesforce login",
+    "outcome": "success",
+    "details": {
+      "org_id": "00D5f000000XXXX",
+      "profile": "Marketing User",
+      "mfa_used": true
+    }
+  },
+  {
+    "id": "env-028",
+    "timestamp": "2026-01-15T18:00:00Z",
+    "event_type": "vpn_disconnection",
+    "source_ip": "73.189.45.120",
+    "target_host": "vpn-gateway-east",
+    "target_port": 443,
+    "username": "remote.contractor1",
+    "action": "VPN disconnected",
+    "outcome": "success",
+    "details": {
+      "session_duration_hours": 8.5,
+      "data_transferred_gb": 2.3
+    }
+  },
+  {
+    "id": "env-029",
+    "timestamp": "2026-01-15T18:30:00Z",
+    "event_type": "successful_login",
+    "source_ip": "10.30.1.100",
+    "target_host": "workstation-support-010",
+    "target_port": 3389,
+    "username": "help.desk.agent1",
+    "action": "RDP login",
+    "outcome": "success",
+    "details": {
+      "department": "IT Support",
+      "location": "Phoenix Office",
+      "shift": "evening"
+    }
+  },
+  {
+    "id": "env-030",
+    "timestamp": "2026-01-15T19:00:00Z",
+    "event_type": "ticket_created",
+    "source_ip": "10.30.1.100",
+    "target_host": "servicenow.company.com",
+    "target_port": 443,
+    "username": "help.desk.agent1",
+    "action": "incident created",
+    "outcome": "success",
+    "details": {
+      "ticket_id": "INC0012345",
+      "priority": "P3",
+      "category": "Password Reset",
+      "requester": "new.employee"
+    }
+  },
+  {
+    "id": "env-031",
+    "timestamp": "2026-01-15T19:30:00Z",
+    "event_type": "successful_login",
+    "source_ip": "10.40.1.25",
+    "target_host": "security-siem",
+    "target_port": 443,
+    "username": "soc.analyst1",
+    "action": "Splunk login",
+    "outcome": "success",
+    "details": {
+      "department": "Security Operations",
+      "shift": "night",
+      "role": "Analyst"
+    }
+  },
+  {
+    "id": "env-032",
+    "timestamp": "2026-01-15T20:00:00Z",
+    "event_type": "alert_triggered",
+    "source_ip": null,
+    "target_host": "security-siem",
+    "target_port": null,
+    "username": "SYSTEM",
+    "action": "correlation alert",
+    "outcome": "triggered",
+    "details": {
+      "alert_name": "Multiple Failed Logins",
+      "severity": "medium",
+      "events_matched": 5
+    }
+  },
+  {
+    "id": "env-033",
+    "timestamp": "2026-01-15T20:30:00Z",
+    "event_type": "investigation_started",
+    "source_ip": "10.40.1.25",
+    "target_host": "security-siem",
+    "target_port": 443,
+    "username": "soc.analyst1",
+    "action": "case created",
+    "outcome": "success",
+    "details": {
+      "case_id": "CASE-2026-0115-001",
+      "alert_id": "ALT-12345",
+      "priority": "medium"
+    }
+  },
+  {
+    "id": "env-034",
+    "timestamp": "2026-01-15T21:00:00Z",
+    "event_type": "network_flow",
+    "source_ip": "10.10.3.100",
+    "target_host": "api.github.com",
+    "target_port": 443,
+    "username": null,
+    "action": "HTTPS connection",
+    "outcome": "success",
+    "details": {
+      "bytes_sent": 15000,
+      "bytes_received": 450000,
+      "duration_seconds": 5
+    }
+  },
+  {
+    "id": "env-035",
+    "timestamp": "2026-01-15T21:30:00Z",
+    "event_type": "dns_query",
+    "source_ip": "10.10.1.50",
+    "target_host": "internal-dns",
+    "target_port": 53,
+    "username": null,
+    "action": "DNS lookup",
+    "outcome": "success",
+    "details": {
+      "query": "nas-finance-01.corp.local",
+      "query_type": "A",
+      "response": "10.50.1.100"
+    }
+  },
+  {
+    "id": "env-036",
+    "timestamp": "2026-01-15T22:00:00Z",
+    "event_type": "log_rotation",
+    "source_ip": null,
+    "target_host": "app-server-01",
+    "target_port": null,
+    "username": "SYSTEM",
+    "action": "logrotate",
+    "outcome": "success",
+    "details": {
+      "logs_rotated": [
+        "/var/log/application.log",
+        "/var/log/access.log"
+      ],
+      "compressed": true
+    }
+  },
+  {
+    "id": "env-037",
+    "timestamp": "2026-01-15T22:30:00Z",
+    "event_type": "certificate_renewed",
+    "source_ip": null,
+    "target_host": "certbot-runner",
+    "target_port": null,
+    "username": "SYSTEM",
+    "action": "cert renewal",
+    "outcome": "success",
+    "details": {
+      "domain": "api.company.com",
+      "issuer": "Let's Encrypt",
+      "valid_days": 90
+    }
+  },
+  {
+    "id": "env-038",
+    "timestamp": "2026-01-15T23:00:00Z",
+    "event_type": "cron_job",
+    "source_ip": null,
+    "target_host": "batch-processor",
+    "target_port": null,
+    "username": "svc-batch",
+    "action": "scheduled job",
+    "outcome": "success",
+    "details": {
+      "job": "nightly-report-generator",
+      "duration_minutes": 15,
+      "records_processed": 500000
+    }
+  },
+  {
+    "id": "env-039",
+    "timestamp": "2026-01-15T23:30:00Z",
+    "event_type": "replication_sync",
+    "source_ip": "10.50.1.10",
+    "target_host": "dr-site-postgres",
+    "target_port": 5432,
+    "username": "svc-replication",
+    "action": "WAL sync",
+    "outcome": "success",
+    "details": {
+      "lag_seconds": 2,
+      "bytes_synced": 150000000,
+      "primary": "prod-postgres-01"
+    }
+  },
+  {
+    "id": "env-040",
+    "timestamp": "2026-01-16T00:00:00Z",
+    "event_type": "maintenance_window",
+    "source_ip": null,
+    "target_host": "k8s-cluster-prod",
+    "target_port": null,
+    "username": "svc-maintenance",
+    "action": "node drain",
+    "outcome": "success",
+    "details": {
+      "node": "worker-node-05",
+      "pods_evicted": 12,
+      "reason": "kernel update"
+    }
   }
 ]

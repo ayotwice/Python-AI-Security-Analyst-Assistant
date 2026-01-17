@@ -29,3 +29,6 @@ agent-ui/
 
 # Streaming data (regenerated at runtime)
 data/streaming_logs.json
+
+# Personal notes
+pyplan.md

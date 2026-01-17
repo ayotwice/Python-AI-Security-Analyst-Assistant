@@ -91,7 +91,7 @@ security_analyst = Agent(
         "If a query fails, check the schema and try again.",
         "When asked to generate a report, use the 'save_security_report' tool to save it as a formal document.",
     ],
-    tools=[duckdb_tools.query_security_events, duckdb_tools.get_database_schema, reporting_tools.save_security_report],
+    tools=[duckdb_tools.query_security_events, duckdb_tools.get_database_schema, duckdb_tools.get_event_summary, reporting_tools.save_security_report],
     # Store sessions in SQLite
     db=SqliteDb(db_file=AGENT_DB),
     # Add current date/time to context
