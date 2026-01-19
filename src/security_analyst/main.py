@@ -47,16 +47,35 @@ def create_cli_agent(model_id: str):
     
     duckdb_tools = DuckDBTools()
     
+    # Get the schema to include in context
+    schema = duckdb_tools.get_database_schema()
+    
     return Agent(
         name="Security Analyst CLI",
         model=OpenRouter(id=model_id),
         instructions=[
-            "You are a security analyst assistant.",
-            "Answer questions about security events and vulnerabilities using the database tools.",
-            "Be concise and helpful. Format responses for terminal readability.",
+            "You are an expert Security Analyst for threat detection and incident response.",
+            "You have access to a DuckDB database with security events and vulnerabilities.",
+            "",
+            "DATABASE SCHEMA:",
+            schema,
+            "",
+            "IMPORTANT RULES:",
+            "- Use 'query_security_events' to run SQL queries against this schema",
+            "- Column names are: id, timestamp, event_type, source_ip, target_host, target_port, username, action, outcome, severity, details",
+            "- For vulnerabilities: id, cve_id, title, severity, description, affected_host, affected_software, cvss_score, remediation, discovered_at",
+            "- When user asks about 'hosts', query the 'target_host' column",
+            "- When user asks about 'users', query the 'username' column",
+            "",
+            "RESPONSE FORMATTING (for terminal display):",
+            "- Keep responses SHORT and scannable",
+            "- Use bullet points instead of wide tables",
+            "- Format: '• CVE-ID (SEVERITY) - Title - Host'",
+            "- Truncate long descriptions",
         ],
         tools=[duckdb_tools.query_security_events, duckdb_tools.get_database_schema, duckdb_tools.get_event_summary],
         markdown=True,
+        add_datetime_to_context=True,
     )
 
 
