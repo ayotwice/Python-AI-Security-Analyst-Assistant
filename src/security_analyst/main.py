@@ -39,6 +39,96 @@ load_dotenv()
 console = Console()
 
 
+def create_cli_agent(model_id: str):
+    """Create an agent for CLI interactions."""
+    from agno.agent import Agent
+    from agno.models.openrouter import OpenRouter
+    from .tools import DuckDBTools
+    
+    duckdb_tools = DuckDBTools()
+    
+    return Agent(
+        name="Security Analyst CLI",
+        model=OpenRouter(id=model_id),
+        instructions=[
+            "You are a security analyst assistant.",
+            "Answer questions about security events and vulnerabilities using the database tools.",
+            "Be concise and helpful. Format responses for terminal readability.",
+        ],
+        tools=[duckdb_tools.query_security_events, duckdb_tools.get_database_schema, duckdb_tools.get_event_summary],
+        markdown=True,
+    )
+
+
+def run_chat_mode(model_id: str):
+    """Run interactive chat mode."""
+    console.print("[bold cyan]🔒 Security Analyst Chat Mode[/bold cyan]")
+    console.print(f"[dim]Using model: {model_id}[/dim]")
+    console.print("[dim]Type 'exit' or 'quit' to leave, 'help' for commands[/dim]")
+    console.print()
+    
+    agent = create_cli_agent(model_id)
+    
+    while True:
+        try:
+            user_input = console.input("[bold green]You:[/bold green] ").strip()
+            
+            if not user_input:
+                continue
+            
+            if user_input.lower() in ("exit", "quit", "q"):
+                console.print("[dim]Goodbye![/dim]")
+                break
+            
+            if user_input.lower() == "help":
+                console.print()
+                console.print("[bold]Available commands:[/bold]")
+                console.print("  [cyan]exit/quit[/cyan] - Exit chat mode")
+                console.print("  [cyan]schema[/cyan]    - Show database schema")
+                console.print("  [cyan]summary[/cyan]   - Show event summary")
+                console.print()
+                console.print("[bold]Example questions:[/bold]")
+                console.print("  - Show me all failed login attempts")
+                console.print("  - What are the critical vulnerabilities?")
+                console.print("  - Which hosts have the most events?")
+                console.print()
+                continue
+            
+            if user_input.lower() == "schema":
+                user_input = "Show me the database schema"
+            elif user_input.lower() == "summary":
+                user_input = "Give me a summary of the events in the database"
+            
+            console.print()
+            with console.status("[bold cyan]Thinking...[/bold cyan]"):
+                response = agent.run(user_input)
+            
+            console.print("[bold blue]Agent:[/bold blue]")
+            console.print(response.content)
+            console.print()
+            
+        except KeyboardInterrupt:
+            console.print("\n[dim]Goodbye![/dim]")
+            break
+        except Exception as e:
+            console.print(f"[red]Error:[/red] {e}")
+            console.print()
+
+
+def run_ask_mode(question: str, model_id: str):
+    """Run single question mode."""
+    console.print(f"[dim]Using model: {model_id}[/dim]")
+    console.print()
+    
+    agent = create_cli_agent(model_id)
+    
+    with console.status("[bold cyan]Analyzing...[/bold cyan]"):
+        response = agent.run(question)
+    
+    console.print(response.content)
+    console.print()
+
+
 def parse_args():
     """Parse command line arguments."""
     parser = argparse.ArgumentParser(
@@ -78,6 +168,19 @@ def parse_args():
         help="Time window for correlation in minutes (default: 10)"
     )
     
+    parser.add_argument(
+        "--chat",
+        action="store_true",
+        help="Start interactive chat mode for natural language queries"
+    )
+    
+    parser.add_argument(
+        "--ask",
+        type=str,
+        metavar="QUESTION",
+        help="Ask a single question and exit (e.g., --ask 'Show me failed logins')"
+    )
+    
     return parser.parse_args()
 
 
@@ -105,7 +208,7 @@ def main():
     console.print()
     
     # Check for API key if AI is enabled
-    if not args.no_ai:
+    if not args.no_ai or args.chat or args.ask:
         api_key = os.environ.get("OPENROUTER_API_KEY")
         if not api_key:
             console.print("[red]Error:[/red] No API key found.")
@@ -116,6 +219,16 @@ def main():
             console.print()
             console.print("Or run with --no-ai to skip AI analysis.")
             sys.exit(1)
+    
+    # Handle interactive chat mode
+    if args.chat:
+        run_chat_mode(args.model)
+        return
+    
+    # Handle single question mode
+    if args.ask:
+        run_ask_mode(args.ask, args.model)
+        return
     
     # Run analysis with progress indicators
     with Progress(
